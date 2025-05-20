@@ -27,7 +27,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>"))+";\n});\n";
             }else if(path.extname(rutacomp) == '.html'){
                 let script = fs.readFileSync(rutacomp, 'utf8');
-                ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>")).replaceAll("$>", "$&gt;").replaceAll("<$", "&lt;$")+";\n});\n";
+                ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>")).replaceAll("$>", "$"+"&gt;").replaceAll("<$", "&lt;$")+";\n});\n";
             }else{
                 let script = fs.readFileSync(rutacomp);
                 let base64 = script.toString('base64');
