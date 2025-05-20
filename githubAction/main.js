@@ -15,8 +15,8 @@ try{
     var fs = require("fs");
     var Bloggerify = require("Bloggerify");
 }catch(e){
-    console.error(error.stack || error.message);
-    core.setFailed(error.stack || error.message);
+    console.error(e.stack || e.message);
+    core.setFailed(e.stack || e.message);
 }
 console.info(prefix + "Dependencies loaded.");
 console.info(prefix + "Starting Bloggerify...");
