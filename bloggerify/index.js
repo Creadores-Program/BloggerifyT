@@ -26,6 +26,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
                 let script = fs.readFileSync(rutacomp, 'utf8');
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>"))+";\n});\n";
             }else if(path.extname(rutacomp) == '.html'){
+                let script = fs.readFileSync(rutacomp, 'utf8');
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(cheerio.load(script.replaceAll(/<\/script>/gi, "<\\/script>")).html())+";\n});\n";
             }else{
                 let script = fs.readFileSync(rutacomp);
