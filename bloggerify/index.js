@@ -22,9 +22,11 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
             }else if(path.extname(rutacomp) == '.json'){
                 let script = fs.readFileSync(rutacomp, 'utf8');
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+script.replaceAll(/<\/script>/gi, "<\\/script>")+";\n});\n";
-            }else if(path.extname(rutacomp) == '.css' || path.extname(rutacomp) == '.html'){
+            }else if(path.extname(rutacomp) == '.css'){
                 let script = fs.readFileSync(rutacomp, 'utf8');
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>"))+";\n});\n";
+            }else if(path.extname(rutacomp) == '.html'){
+                ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(cheerio.load(script.replaceAll(/<\/script>/gi, "<\\/script>")).html())+";\n});\n";
             }else{
                 let script = fs.readFileSync(rutacomp);
                 let base64 = script.toString('base64');
