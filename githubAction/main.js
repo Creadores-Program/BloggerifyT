@@ -9,7 +9,7 @@ try{
     execSync("npm ci", { stdio: "inherit", cwd: ruteBloggerify });
     execSync("npm run build --if-present", { stdio: "inherit", cwd: ruteBloggerify });
     execSync("npm pack", { stdio: "inherit", cwd: ruteBloggerify });
-    execSync("npm install ./bloggerify/Bloggerify-1.0.0.tgz", { stdio: "inherit", cwd: rute });
+    execSync("npm install "+ruteBloggerify+"Bloggerify-1.0.0.tgz", { stdio: "inherit", cwd: rute });
     execSync("npm install", { stdio: "inherit", cwd: rute });
     var core = require('@actions/core');
     var github = require('@actions/github');
