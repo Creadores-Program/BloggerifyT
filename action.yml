@@ -1,0 +1,13 @@
+name: "Bloggerify"
+author: "Creadores Program"
+description: "Transpiler for Google Blogger to create classic templates/themes easily! / Transpilador para blogger Google para crear Plantillas/Temas clasicos facilmente!"
+inputs:
+  path:
+    description: "Path to the Blogger template files to be transpiled. / Ruta a los archivos de plantilla de Blogger a transpilar."
+    required: true
+runs:
+  using: "node20"
+  main: "githubAction/main.js"
+branding:
+  icon: "code"
+  color: "orange"
