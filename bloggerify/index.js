@@ -38,7 +38,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
     $("body").append("<script src='https://cdn.jsdelivr.net/npm/simple-browser-require@1.0.0/require.min.js'></script>\n");
     $("body").append("<script>\n"+ScriptB+"\nlet manifest = require('manifest.json');\nlet mod = require(manifest.main);\nmod.load();\n</script>\n");
     let output = $.html();
-    output = output.replaceALL(/&lt;\$(.*?)\$&gt;/g, '<$$1$>');
+    output = output.replace(/&lt;\$(.*?)\$&gt;/g, '<$$1$>');
     fs.writeFileSync(pathDestinity+"/theme_Blogger_"+(Math.floor(Math.random() * 9999999))+".txt", output, 'utf8');
     console.info(prefix+"Done! Transpiled Blogger theme saved in "+pathDestinity+"/theme_Blogger_XXXXXXX.txt");
 };
