@@ -14,7 +14,7 @@ try{
     var core = require('@actions/core');
     var github = require('@actions/github');
     var fs = require("fs");
-    var Bloggerify = require("Bloggerify");
+    var Bloggerify = require("BloggerifyT");
 }catch(e){
     console.error(e.stack || e.message);
     core.setFailed(e.stack || e.message);
