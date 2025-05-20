@@ -48,7 +48,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
     }
     loadCarpet(pathToTranspile);
     let $ = cheerio.load(fs.readFileSync(pathToTranspile+'/index.html', 'utf8'), { decodeEntities: false });
-    if($.find("div").length > 0){
+    if($("div").length > 0){
         transpileHtml($);
     }
     $('head').append("<style>\n"+fs.readFileSync(pathToTranspile+"/main.css", "utf8")+"\n</style>\n");
