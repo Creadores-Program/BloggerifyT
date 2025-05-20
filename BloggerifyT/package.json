@@ -1,5 +1,5 @@
 {
-    "name": "Bloggerify",
+    "name": "BloggerifyT",
     "version": "1.0.0",
     "description": "Transpiler for Google Blogger to create classic templates/themes easily! / Transpilador para blogger Google para crear Plantillas/Temas clasicos facilmente!",
     "main": "./index.js",
@@ -10,16 +10,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Creadores-Program/Bloggerify.git",
-        "directory": "bloggerify"
+        "url": "https://github.com/Creadores-Program/BloggerifyT.git",
+        "directory": "BloggerifyT"
     },
     "bugs": {
-        "url": "https://github.com/Creadores-Program/Bloggerify/issues"
+        "url": "https://github.com/Creadores-Program/BloggerifyT/issues"
     },
-    "homepage": "https://github.com/Creadores-Program/Bloggerify",
+    "homepage": "https://github.com/Creadores-Program/BloggerifyT",
     "keywords": [
         "blogger",
-        "bloggerify",
+        "bloggerifyt",
         "transpiler",
         "template",
         "theme",

@@ -1,5 +1,5 @@
 {
-    "name": "Bloggerify-GitAction",
+    "name": "BloggerifyT-GitAction",
     "version": "1.0.0",
     "description": "Transpiler for Google Blogger to create classic templates/themes easily! / Transpilador para blogger Google para crear Plantillas/Temas clasicos facilmente!",
     "main": "./main.js",
@@ -10,16 +10,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Creadores-Program/Bloggerify.git",
+        "url": "https://github.com/Creadores-Program/BloggerifyT.git",
         "directory": "githubAction"
     },
     "bugs": {
-        "url": "https://github.com/Creadores-Program/Bloggerify/issues"
+        "url": "https://github.com/Creadores-Program/BloggerifyT/issues"
     },
-    "homepage": "https://github.com/Creadores-Program/Bloggerify",
+    "homepage": "https://github.com/Creadores-Program/BloggerifyT",
     "keywords": [
         "blogger",
-        "bloggerify",
+        "bloggerifyt",
         "transpiler",
         "template",
         "theme",
@@ -29,7 +29,7 @@
         "github"
     ],
     "dependencies": {
-        "Bloggerify": "1.0.0",
+        "BloggerifyT": "1.0.0",
         "@actions/core": "^1.10.1",
         "@actions/github": "^6.0.0"
     }

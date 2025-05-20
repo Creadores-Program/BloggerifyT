@@ -1,5 +1,5 @@
 module.exports = function transpile(pathToTranspile, pathDestinity){
-    const prefix = "[Bloggerify] ";
+    const prefix = "[BloggerifyT] ";
     console.info(prefix+"Transpiling Blogger theme...");
     console.info(prefix+"Powered by Creadores Program");
     const cheerio = require('cheerio');
@@ -27,7 +27,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
                 ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>"))+";\n});\n";
             }else if(path.extname(rutacomp) == '.html'){
                 let script = fs.readFileSync(rutacomp, 'utf8');
-                ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>")).replaceAll("$>", "$"+"&gt;").replaceAll("<$", "&lt;$")+";\n});\n";
+                ScriptB += "require.register('"+path.relative(pathToTranspile, rutacomp)+"', function(module){\n module.exports = "+JSON.stringify(script.replaceAll(/<\/script>/gi, "<\\/script>")).replaceAll("$>", "$$&gt;").replaceAll("<$", "&lt;$")+";\n});\n";
             }else{
                 let script = fs.readFileSync(rutacomp);
                 let base64 = script.toString('base64');
@@ -35,11 +35,25 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
             }
         }
     }
+    function transpileHtml($){
+        $("div").each(function(i, elem){
+            if($(this).attr("src")){
+                $(this).append(fs.readFileSync(pathToTranspile + "/" + $(this).attr("src"), 'utf8'));
+                if($(this).find("div").length > 0){
+                    transpileHtml($(this));
+                }
+                $(this).removeAttr("src");
+            }
+        });
+    }
     loadCarpet(pathToTranspile);
     let $ = cheerio.load(fs.readFileSync(pathToTranspile+'/index.html', 'utf8'), { decodeEntities: false });
+    if($.find("div").length > 0){
+        transpileHtml($);
+    }
     $('head').append("<style>\n"+fs.readFileSync(pathToTranspile+"/main.css", "utf8")+"\n</style>\n");
     $("body").append("<script src='https://cdn.jsdelivr.net/npm/simple-browser-require@1.0.0/require.min.js'></script>\n");
-    $("body").append("<script>\n"+ScriptB+"\nlet manifest = require('manifest.json');\nlet mod = require(manifest.main);\nmod.load();\n</script>\n");
+    $("body").append("<script>\n"+ScriptB+"\nlet manifest = require('package.json');\nlet mod = require(manifest.main);\nmod.load();\n</script>\n");
     let output = $.html();
     output = output.replace(/&lt;\$(.*?)\$&gt;/g, function(_, tag){
         return  '<$' + tag + '$>';
