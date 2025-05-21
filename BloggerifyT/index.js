@@ -35,12 +35,12 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
             }
         }
     }
-    function transpileHtml($){
-        $("div").each(function(i, elem){
+    function transpileHtml($, root){
+        $(root).find("div").each(function(i, elem){
             if($(this).attr("src")){
                 $(this).append(fs.readFileSync(pathToTranspile + "/" + $(this).attr("src"), 'utf8'));
                 if($(this).find("div").length > 0){
-                    transpileHtml($(this));
+                    transpileHtml($, this);
                 }
                 $(this).removeAttr("src");
             }
@@ -49,7 +49,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
     loadCarpet(pathToTranspile);
     let $ = cheerio.load(fs.readFileSync(pathToTranspile+'/index.html', 'utf8'), { decodeEntities: false });
     if($("div").length > 0){
-        transpileHtml($);
+        transpileHtml($, $.root());
     }
     $('head').append("<style>\n"+fs.readFileSync(pathToTranspile+"/main.css", "utf8")+"\n</style>\n");
     $("body").append("<script src='https://cdn.jsdelivr.net/npm/simple-browser-require@1.0.0/require.min.js'></script>\n");
