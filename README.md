@@ -54,7 +54,7 @@ El contenido de `partials/header.html` se insertará automáticamente en ese lug
 Puedes instalar la versión más reciente desde los lanzamientos de GitHub usando el archivo `.tgz`:
 
 ```sh
-npm install https://github.com/Creadores-Program/BloggerifyT/releases/download/v1.0.0/BloggerifyT-1.0.0.tgz
+npm install https://github.com/Creadores-Program/BloggerifyT/releases/download/v1.0.1/BloggerifyT-1.0.0.tgz
 ```
 
 O descarga el `.tgz` desde la [página de lanzamientos](https://github.com/Creadores-Program/BloggerifyT/releases) y luego:
@@ -94,7 +94,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: BloggerifyT
-        uses: Creadores-Program/BloggerifyT@v1.0.0
+        uses: Creadores-Program/BloggerifyT@v1.0.1
         with:
           path: './demo'
       - name: Upload Artifact
