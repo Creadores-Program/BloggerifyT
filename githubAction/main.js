@@ -4,12 +4,7 @@ console.info(prefix + "Loading dependencies...");
 try{
     const { execSync } = require("child_process");
     let rute = __dirname.replaceAll("\\", "/")+"/";
-    let ruteBloggerify = process.env.GITHUB_WORKSPACE + "/BloggerifyT/";
-    execSync("npm install", { stdio: "inherit", cwd: ruteBloggerify });
-    execSync("npm ci", { stdio: "inherit", cwd: ruteBloggerify });
-    execSync("npm run build --if-present", { stdio: "inherit", cwd: ruteBloggerify });
-    execSync("npm pack", { stdio: "inherit", cwd: ruteBloggerify });
-    execSync("npm install "+ruteBloggerify+"BloggerifyT-1.0.0.tgz", { stdio: "inherit", cwd: rute });
+    execSync("npm install https://github.com/Creadores-Program/BloggerifyT/releases/download/v1.0.0/BloggerifyT-1.0.0.tgz", { stdio: "inherit", cwd: rute });
     execSync("npm install", { stdio: "inherit", cwd: rute });
     var core = require('@actions/core');
     var github = require('@actions/github');
