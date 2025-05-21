@@ -1,6 +1,6 @@
 name: "BloggerifyT"
 author: "Creadores Program"
-description: "Transpiler for Google Blogger to create classic templates/themes easily! / Transpilador para blogger Google para crear Plantillas/Temas clasicos facilmente!"
+description: "Transpiler for Google Blogger to create classic templates/themes easily!"
 inputs:
   path:
     description: "Path to the Blogger template files to be transpiled. / Ruta a los archivos de plantilla de Blogger a transpilar."
