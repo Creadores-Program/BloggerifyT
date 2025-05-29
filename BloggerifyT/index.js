@@ -51,6 +51,7 @@ module.exports = function transpile(pathToTranspile, pathDestinity){
     if($("div").length > 0){
         transpileHtml($, $.root());
     }
+    $("head").append("<meta name='generator' content='BloggerifyT'/>");
     $('head').append("<style>\n"+fs.readFileSync(pathToTranspile+"/main.css", "utf8")+"\n</style>\n");
     $("body").append("<script src='https://cdn.jsdelivr.net/npm/simple-browser-require@1.0.0/require.min.js'></script>\n");
     $("body").append("<script>\n"+ScriptB+"\nlet manifest = require('package.json');\nlet mod = require(manifest.main);\nmod.load();\n</script>\n");
